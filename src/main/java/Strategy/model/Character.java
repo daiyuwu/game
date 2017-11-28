@@ -1,11 +1,11 @@
 package Strategy.model;
 
-import Strategy.trait.Base;
+import Strategy.trait.IBase;
 
 /**
  * Created by TY on 2017/11/27.
  */
-public class Character implements Base {
+public class Character implements IBase {
 
     @Override
     public void attack() {
