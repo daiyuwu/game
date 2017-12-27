@@ -5,19 +5,24 @@ import Strategy.trait.UserInterface;
 import java.io.*;
 import java.util.Scanner;
 
-public class FileUserInterface implements UserInterface {
-    public void showTip(String tip) {
-        System.out.println(tip);
-    }
+public class FileUserInterface extends BaseUserInterface implements UserInterface {
 
     public String input() {
         System.out.print("請輸入檔案絕對路徑：");
-        Scanner scanner = new Scanner(System.in);
-        File file = new File(scanner.nextLine());
-        if (!file.exists()) {
-            System.out.println("file not exists !");
-            return "";
-        }
+        String inputPath = "";
+        File file = null;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            inputPath = scanner.nextLine();
+            if (inputPath.equals("exit")) break;
+            file = new File(inputPath);
+            if (!file.exists()) {
+                System.out.println("file not exists !");
+                continue;
+            } else {
+                break;
+            }
+        } while (true);
         StringBuffer content = new StringBuffer();
         BufferedReader br = null;
         FileReader fr = null;
@@ -26,8 +31,6 @@ public class FileUserInterface implements UserInterface {
             br = new BufferedReader(fr);
             String line = "";
             while ((line = br.readLine()) != null) {
-                // convert to char and display it
-//                System.out.print((char) content);
                 content.append(line);
             }
         } catch (FileNotFoundException e) {

@@ -6,11 +6,11 @@ package Strategy.model;
 public class Magician extends Character {
     @Override
     public void attack() {
-        System.out.println("Attack of magic !!");
+        System.out.println("Magic Attack !!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Defend of magic !!");
+        System.out.println("Magic Defend !!");
     }
 }
