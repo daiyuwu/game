@@ -9,6 +9,7 @@ public class CliUserInterface extends BaseUserInterface implements UserInterface
 
     public static boolean isCommonCommand(String inputData) {
         if ("".equals(inputData)) return true;
+        else if ("HOME".equals(inputData)) MainScreen.start();
         else if ("ESC".equals(inputData)) System.exit(1);
         return false;
     }

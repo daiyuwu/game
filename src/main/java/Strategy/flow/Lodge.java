@@ -3,8 +3,40 @@ package Strategy.flow;
 import Strategy.model.*;
 import Strategy.trait.UserInterface;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Lodge {
-    public void createCharacter() {
+    public static String createCharacterTest() {
+        UserInterface ui = new CliUserInterface();
+        ui.showTip("開始創建角色");
+
+        String titleTip = "(1)職業 (2)種族";
+        Set<String> options = new HashSet<>();
+        options.add("1");
+        options.add("2");
+        options.add("BK");
+        options.add("HOME");
+        options.add("BYE");
+
+        String inputData = loopPack(titleTip, options);
+        if ("1".equals(inputData)) selectJob();
+        else if ("2".equals(inputData)) selectRace();
+        return inputData;
+    }
+
+    public static String loopPack(String titleTip, Set<String> options) {
+        String inputData;
+        UserInterface ui = new CliUserInterface();
+        do {
+            ui.showTip(titleTip);
+            inputData = ui.input().toUpperCase();
+        } while (!options.contains(inputData));
+        return inputData;
+    }
+
+    public static void createCharacter() {
         UserInterface ui = new CliUserInterface();
         ui.showTip("開始創建角色");
         String inputData;
@@ -18,7 +50,7 @@ public class Lodge {
         if (("BK").equals(inputData)) createCharacter();
     }
 
-    public void selectJob() {
+    public static void selectJob() {
         UserInterface ui = new CliUserInterface();
         ui.showTip("選擇職業");
         ui.showTip("(1)戰士 (2)法師");
@@ -39,7 +71,7 @@ public class Lodge {
         if (("BK").equals(inputData)) createCharacter();
     }
 
-    public void action() {
+    public static void action() {
         UserInterface ui = new CliUserInterface();
         ui.showTip("選擇行動");
         ui.showTip("(1)攻擊 (2)防禦");
@@ -53,7 +85,7 @@ public class Lodge {
         if (("BK").equals(inputData)) createCharacter();
     }
 
-    public void selectRace() {
+    public static void selectRace() {
         UserInterface ui = new CliUserInterface();
         ui.showTip("選擇種族");
         ui.showTip("(1)人類 (2)精靈");

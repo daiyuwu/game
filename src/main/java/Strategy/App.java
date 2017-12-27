@@ -2,6 +2,7 @@ package Strategy;
 
 import Strategy.flow.Lodge;
 import Strategy.flow.MainScreen;
+import Strategy.model.CliUserInterface;
 import Strategy.model.GameLogFile;
 
 /**
@@ -12,8 +13,9 @@ public class App {
 //        Lodge lodge = new Lodge();
 //        lodge.test();
         MainScreen.start();
-        Lodge lodge = new Lodge();
-        lodge.createCharacter();
-        lodge.action();
+        String rs = Lodge.createCharacterTest();
+        CliUserInterface.isCommonCommand(rs);
+
+        Lodge.action();
     }
 }
