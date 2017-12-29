@@ -6,7 +6,7 @@ import strategy.trait.UserInterface;
 
 public class GameController {
 
-    UserInterface ui = new CliUserInterface();
+//    UserInterface ui = new CliUserInterface();
 
     public void start() {
         new MainChoose().readyToChoose();

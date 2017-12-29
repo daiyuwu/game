@@ -2,7 +2,7 @@ package strategy.cenes.choose;
 
 import strategy.trait.Choosable;
 
-public class CreateCharacterChoose extends BaseChoose implements Choosable {
+public class CreateCharacterChoose extends BaseChoose {
 
     final String JOB = "1";
     final String RACE = "2";
@@ -15,10 +15,17 @@ public class CreateCharacterChoose extends BaseChoose implements Choosable {
     }
 
     @Override
-    public String choose() {
+    public String showTipAndInput() {
         userInterface.showTip("(1)職業 (2)種族");
         String inputData = userInterface.input().toUpperCase();
+        choose(inputData);
         baseChoose(inputData);
+//        System.out.println("CreateCharaterChoose.inputData: " + inputData);
+        return inputData;
+    }
+
+    @Override
+    public void choose(String inputData) {
         switch (inputData) {
             case JOB:
                 new JobChoose().readyToChoose();
@@ -27,16 +34,16 @@ public class CreateCharacterChoose extends BaseChoose implements Choosable {
                 System.exit(1);
                 break;
         }
-        return inputData;
     }
 
     @Override
     public void nextScenes() {
+        System.out.println("CreateCharaterChoose.nextScenes()");
         new ActionChoose().readyToChoose();
     }
 
     @Override
     public void preScenes() {
-        new MainChoose().readyToChoose();
+//        new MainChoose().readyToChoose();
     }
 }

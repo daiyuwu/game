@@ -1,5 +1,5 @@
 package strategy.model;
 
 public class GameLogFile {
-    public static Character character;
+    public static Character character = new DragonRider();
 }

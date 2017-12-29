@@ -8,7 +8,7 @@ import strategy.flow.GameController;
  */
 public class App {
     public static void main(String args[]){
-//        new GameController().start();
-        new MainStory().loadStoryContent();
+        new GameController().start();
+//        new MainStory().loadStoryContent();
     }
 }

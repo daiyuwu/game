@@ -5,7 +5,7 @@ import strategy.model.Magician;
 import strategy.model.Warrior;
 import strategy.trait.Choosable;
 
-public class JobChoose extends BaseChoose implements Choosable {
+public class JobChoose extends BaseChoose {
 
     final String WARRIOR = "1";
     final String MAGICIAN = "2";
@@ -18,10 +18,16 @@ public class JobChoose extends BaseChoose implements Choosable {
     }
 
     @Override
-    public String choose() {
+    public String showTipAndInput() {
         userInterface.showTip("(1)戰士 (2)法師");
         String inputData = userInterface.input().toUpperCase();
+        choose(inputData);
         baseChoose(inputData);
+        return inputData;
+    }
+
+    @Override
+    public void choose(String inputData) {
         switch (inputData) {
             case WARRIOR:
                 GameLogFile.character = new Warrior();
@@ -30,16 +36,16 @@ public class JobChoose extends BaseChoose implements Choosable {
                 GameLogFile.character = new Magician();
                 break;
         }
-        return inputData;
     }
 
     @Override
     public void nextScenes() {
+        System.out.println("JobChoose.nextScenes()");
         new ActionChoose().readyToChoose();
     }
 
     @Override
     public void preScenes() {
-        new CreateCharacterChoose().readyToChoose();
+//        new CreateCharacterChoose().readyToChoose();
     }
 }

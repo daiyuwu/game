@@ -25,7 +25,7 @@ public class FileUserInterface extends BaseUserInterface implements UserInterfac
                 break;
             }
         } while (true);
-        return FileUtil.readFile(file);
+        return FileUtil.readFile(file, false);
     }
 
     public void output(String outputData) {

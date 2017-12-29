@@ -7,6 +7,21 @@ import java.util.List;
 
 public class FileUtil {
 
+//    static public BufferedReader loadFileAsBuffer(File file) {
+//        if (file == null) return null;
+//
+//        BufferedReader br = null;
+//        FileReader fr = null;
+//
+//        try {
+//            fr = new FileReader(file);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        br = new BufferedReader(fr);
+//    }
+
     static public File loadFile(String path) {
         File file = null;
         file = new File(path);
@@ -46,19 +61,14 @@ public class FileUtil {
             e.printStackTrace();
             return contentSections;
         } finally {
-            try {
-                if (br != null) br.close();
-                if (fr != null) fr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            closeFile(br, fr);
         }
 //        return content.toString();
         contentSections = contentSectionsTemp.toArray(contentSections);
         return contentSections;
     }
 
-    static public String readFile(File file) {
+    static public String readFile(File file, boolean isWrap) {
         if (file == null) return "";
         if (!file.exists()) return "";
 
@@ -82,13 +92,17 @@ public class FileUtil {
             e.printStackTrace();
             return "";
         } finally {
-            try {
-                if (br != null) br.close();
-                if (fr != null) fr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            closeFile(br, fr);
         }
         return content.toString();
+    }
+
+    static private void closeFile(BufferedReader br, FileReader fr) {
+        try {
+            if (br != null) br.close();
+            if (fr != null) fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
