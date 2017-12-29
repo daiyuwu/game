@@ -1,7 +1,5 @@
 package strategy.cenes.choose;
 
-import strategy.trait.Choosable;
-
 public class CreateCharacterChoose extends BaseChoose {
 
     final String JOB = "1";
@@ -15,17 +13,12 @@ public class CreateCharacterChoose extends BaseChoose {
     }
 
     @Override
-    public String showTipAndInput() {
+    public void showTip() {
         userInterface.showTip("(1)職業 (2)種族");
-        String inputData = userInterface.input().toUpperCase();
-        choose(inputData);
-        baseChoose(inputData);
-//        System.out.println("CreateCharaterChoose.inputData: " + inputData);
-        return inputData;
     }
 
     @Override
-    public void choose(String inputData) {
+    public void options(String inputData) {
         switch (inputData) {
             case JOB:
                 new JobChoose().readyToChoose();

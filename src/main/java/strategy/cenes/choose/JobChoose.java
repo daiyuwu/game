@@ -3,7 +3,6 @@ package strategy.cenes.choose;
 import strategy.model.GameLogFile;
 import strategy.model.Magician;
 import strategy.model.Warrior;
-import strategy.trait.Choosable;
 
 public class JobChoose extends BaseChoose {
 
@@ -18,16 +17,12 @@ public class JobChoose extends BaseChoose {
     }
 
     @Override
-    public String showTipAndInput() {
+    public void showTip() {
         userInterface.showTip("(1)戰士 (2)法師");
-        String inputData = userInterface.input().toUpperCase();
-        choose(inputData);
-        baseChoose(inputData);
-        return inputData;
     }
 
     @Override
-    public void choose(String inputData) {
+    public void options(String inputData) {
         switch (inputData) {
             case WARRIOR:
                 GameLogFile.character = new Warrior();

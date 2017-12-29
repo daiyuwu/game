@@ -1,9 +1,6 @@
 package strategy.cenes.choose;
 
 import strategy.model.GameLogFile;
-import strategy.model.Magician;
-import strategy.model.Warrior;
-import strategy.trait.Choosable;
 
 public class ActionChoose extends BaseChoose {
 
@@ -18,16 +15,12 @@ public class ActionChoose extends BaseChoose {
     }
 
     @Override
-    public String showTipAndInput() {
+    public void showTip() {
         userInterface.showTip("(1)攻擊 (2)防禦");
-        String inputData = userInterface.input().toUpperCase();
-        choose(inputData);
-        baseChoose(inputData);
-        return inputData;
     }
 
     @Override
-    public void choose(String inputData) {
+    public void options(String inputData) {
         switch (inputData) {
             case ATTACK:
                 GameLogFile.character.attack();
@@ -40,9 +33,8 @@ public class ActionChoose extends BaseChoose {
 
     @Override
     public void nextScenes() {
-        System.out.println("ActionChoose.nextScenes()");
         readyToChoose();
-//        this.showTipAndInput();
+//        this.choose();
     }
 
     @Override

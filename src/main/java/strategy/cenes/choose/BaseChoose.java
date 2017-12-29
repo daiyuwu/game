@@ -19,14 +19,18 @@ public abstract class BaseChoose extends BaseCenes implements Choosable {
         allowInputs.add(BYE);
         allowInputs.add(BACK);
         init();
-        String inputData = showTipAndInput();
-//        System.out.println("inputData: " + inputData);
-//        System.out.print("allowInputs: ");
-////        System.out.println(ReflectionToStringBuilder.toString(allowInputs));
-//        printCollection(allowInputs);
-//        userInterface.input();
-        if (!allowInputs.contains(inputData)) showTipAndInput();
+        String inputData = choose();
+        if (!allowInputs.contains(inputData)) choose();
         nextScenes();
+    }
+
+    @Override
+    public String choose() {
+        showTip();
+        String inputData = userInterface.input().toUpperCase();
+        options(inputData);
+        baseOptions(inputData);
+        return inputData;
     }
 
     private <T> void printCollection(Collection<T> collection) {
@@ -36,11 +40,8 @@ public abstract class BaseChoose extends BaseCenes implements Choosable {
         System.out.println();
     }
 
-    public void baseChoose(String inputData) {
+    public void baseOptions(String inputData) {
         switch (inputData) {
-//            case ENTER:
-//                nextScenes();
-//                break;
             case BACK:
                 preScenes();
                 break;

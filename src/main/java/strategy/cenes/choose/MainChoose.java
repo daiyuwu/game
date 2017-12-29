@@ -10,21 +10,17 @@ public class MainChoose extends BaseChoose {
     }
 
     @Override
-    public String showTipAndInput() {
+    public void showTip() {
         userInterface.showTip("按下 ENTER 開始/下一步 ! 或 ESC 離開這個世界。");
-        String inputData = userInterface.input().toUpperCase();
-        baseChoose(inputData);
-        return inputData;
     }
 
     @Override
-    public void choose(String inputData) {
+    public void options(String inputData) {
 
     }
 
     @Override
     public void nextScenes() {
-        System.out.println("MainChoose.nextScenes()");
         new MainStory().readyToPlay();
 //        new CreateCharacterChoose().readyToChoose();
     }

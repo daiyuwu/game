@@ -37,7 +37,6 @@ public class MainStory extends BaseStory {
 
     @Override
     public void nextScenes() {
-        System.out.println("MainStory.nextScenes()");
         new CreateCharacterChoose().readyToChoose();
     }
 
