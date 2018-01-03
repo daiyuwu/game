@@ -1,14 +1,14 @@
 package strategy.cenes.story;
 
-import strategy.cenes.BaseCenes;
+import strategy.cenes.BaseScenes;
 import strategy.trait.Stories;
 
-public abstract class BaseStory extends BaseCenes implements Stories {
+public abstract class BaseStory extends BaseScenes implements Stories {
 
     static final public int NORMAL = 0, SLOW = 1;
 
     public void run() {
-        readyToPlay(0);
+        readyToPlay(BaseStory.NORMAL);
     }
 
     public void readyToPlay(int mode) {
@@ -20,6 +20,6 @@ public abstract class BaseStory extends BaseCenes implements Stories {
                 playSlowly();
                 break;
         }
-        nextScenes();
+        gotoNextScenes();
     }
 }

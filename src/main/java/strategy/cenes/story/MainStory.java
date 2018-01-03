@@ -1,6 +1,7 @@
 package strategy.cenes.story;
 
 import strategy.cenes.choose.CreateCharacterChoose;
+import strategy.cenes.choose.MainChoose;
 import strategy.util.FileUtil;
 
 import java.io.File;
@@ -50,12 +51,12 @@ public class MainStory extends BaseStory {
     }
 
     @Override
-    public void nextScenes() {
-        new CreateCharacterChoose().readyToChoose();
+    public void gotoNextScenes() {
+        setNextScenes(new CreateCharacterChoose());
     }
 
     @Override
-    public void preScenes() {
-
+    public void gotoPreScenes() {
+        setNextScenes(new MainChoose());
     }
 }

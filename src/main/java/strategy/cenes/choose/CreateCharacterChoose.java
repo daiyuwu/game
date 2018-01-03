@@ -21,7 +21,7 @@ public class CreateCharacterChoose extends BaseChoose {
     public void options(String inputData) {
         switch (inputData) {
             case JOB:
-                new JobChoose().readyToChoose();
+                setNextScenes(new JobChoose());
                 break;
             case RACE:
                 System.exit(1);
@@ -30,13 +30,12 @@ public class CreateCharacterChoose extends BaseChoose {
     }
 
     @Override
-    public void nextScenes() {
-        System.out.println("CreateCharaterChoose.nextScenes()");
-        new ActionChoose().readyToChoose();
+    public void gotoNextScenes() {
+        setNextScenes(new ActionChoose());
     }
 
     @Override
-    public void preScenes() {
-//        new MainChoose().readyToChoose();
+    public void gotoPreScenes() {
+        setNextScenes(new MainChoose());
     }
 }

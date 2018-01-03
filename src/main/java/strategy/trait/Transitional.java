@@ -1,6 +1,6 @@
 package strategy.trait;
 
 public interface Transitional {
-    void nextScenes();
-    void preScenes();
+    void gotoNextScenes();
+    void gotoPreScenes();
 }

@@ -21,14 +21,13 @@ public class MainChoose extends BaseChoose {
     }
 
     @Override
-    public void nextScenes() {
-        new MainStory().readyToPlay(BaseStory.SLOW);
-//        new CreateCharacterChoose().readyToChoose();
+    public void gotoNextScenes() {
+        setNextScenes(new MainStory());
     }
 
     @Override
-    public void preScenes() {
-
+    public void gotoPreScenes() {
+        System.exit(1);
     }
 
 

@@ -1,29 +1,23 @@
 package strategy.cenes.choose;
 
-import strategy.cenes.BaseCenes;
+import strategy.cenes.BaseScenes;
 import strategy.trait.Choosable;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class BaseChoose extends BaseCenes implements Choosable {
+public abstract class BaseChoose extends BaseScenes implements Choosable {
     public Set<String> allowInputs = new HashSet<>();
 
     final String ENTER = "";
     final String BYE = "BYE";
     final String BACK = "BK";
 
-//    @Override
-//    public void run() {
-//        allowInputs.add(ENTER);
-//        allowInputs.add(BYE);
-//        allowInputs.add(BACK);
-//        init();
-//        String inputData = choose();
-//        if (!allowInputs.contains(inputData)) choose();
-//        nextScenes();
-//    }
+    @Override
+    public void run() {
+        readyToChoose();
+    }
 
     public void readyToChoose() {
         allowInputs.add(ENTER);
@@ -32,7 +26,9 @@ public abstract class BaseChoose extends BaseCenes implements Choosable {
         init();
         String inputData = choose();
         if (!allowInputs.contains(inputData)) choose();
-        nextScenes();
+        if (getNextScenes() == null) {
+            gotoNextScenes();
+        }
     }
 
     @Override
@@ -54,7 +50,7 @@ public abstract class BaseChoose extends BaseCenes implements Choosable {
     public void baseOptions(String inputData) {
         switch (inputData) {
             case BACK:
-                preScenes();
+                gotoPreScenes();
                 break;
             case BYE:
                 System.exit(1);

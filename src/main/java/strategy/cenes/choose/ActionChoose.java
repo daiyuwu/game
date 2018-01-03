@@ -32,13 +32,12 @@ public class ActionChoose extends BaseChoose {
     }
 
     @Override
-    public void nextScenes() {
-        readyToChoose();
-//        this.choose();
+    public void gotoNextScenes() {
+        setNextScenes(new ActionChoose());
     }
 
     @Override
-    public void preScenes() {
-//        new JobChoose().readyToChoose();
+    public void gotoPreScenes() {
+        setNextScenes(new CreateCharacterChoose());
     }
 }
