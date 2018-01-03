@@ -14,6 +14,17 @@ public abstract class BaseChoose extends BaseCenes implements Choosable {
     final String BYE = "BYE";
     final String BACK = "BK";
 
+//    @Override
+//    public void run() {
+//        allowInputs.add(ENTER);
+//        allowInputs.add(BYE);
+//        allowInputs.add(BACK);
+//        init();
+//        String inputData = choose();
+//        if (!allowInputs.contains(inputData)) choose();
+//        nextScenes();
+//    }
+
     public void readyToChoose() {
         allowInputs.add(ENTER);
         allowInputs.add(BYE);

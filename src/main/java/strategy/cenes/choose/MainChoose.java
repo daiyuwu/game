@@ -1,5 +1,6 @@
 package strategy.cenes.choose;
 
+import strategy.cenes.story.BaseStory;
 import strategy.cenes.story.MainStory;
 
 public class MainChoose extends BaseChoose {
@@ -21,7 +22,7 @@ public class MainChoose extends BaseChoose {
 
     @Override
     public void nextScenes() {
-        new MainStory().readyToPlay();
+        new MainStory().readyToPlay(BaseStory.SLOW);
 //        new CreateCharacterChoose().readyToChoose();
     }
 

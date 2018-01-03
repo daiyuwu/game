@@ -35,6 +35,20 @@ public class MainStory extends BaseStory {
         userInterface.output(content);
     }
 
+    public void playSlowly() {
+        File file = FileUtil.loadFile(filePath + fileName);
+        String[] contents = FileUtil.readFileAsArray(file);
+
+        for (String c : contents) {
+            userInterface.output(c);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void nextScenes() {
         new CreateCharacterChoose().readyToChoose();
