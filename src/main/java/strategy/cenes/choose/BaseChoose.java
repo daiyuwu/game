@@ -13,6 +13,7 @@ public abstract class BaseChoose extends BaseScenes implements Choosable {
     final String ENTER = "";
     final String BYE = "BYE";
     final String BACK = "BK";
+    final String SETTING = "SET";
 
     @Override
     public void run() {
@@ -23,6 +24,7 @@ public abstract class BaseChoose extends BaseScenes implements Choosable {
         allowInputs.add(ENTER);
         allowInputs.add(BYE);
         allowInputs.add(BACK);
+        allowInputs.add(SETTING);
         init();
         String inputData = choose();
         if (!allowInputs.contains(inputData)) choose();
@@ -54,6 +56,10 @@ public abstract class BaseChoose extends BaseScenes implements Choosable {
                 break;
             case BYE:
                 System.exit(1);
+                break;
+            case SETTING:
+                new ConfigChoose().readyToChoose();
+                choose();
                 break;
         }
     }

@@ -1,17 +1,18 @@
 package strategy.cenes.story;
 
 import strategy.cenes.BaseScenes;
+import strategy.model.GameConfig;
 import strategy.trait.Stories;
 
 public abstract class BaseStory extends BaseScenes implements Stories {
 
-    static final public int NORMAL = 0, SLOW = 1;
+    static final public String NORMAL = "1", SLOW = "2";
 
     public void run() {
-        readyToPlay(BaseStory.NORMAL);
+        readyToPlay(GameConfig.storyPlayMode);
     }
 
-    public void readyToPlay(int mode) {
+    public void readyToPlay(String mode) {
         switch (mode) {
             case BaseStory.NORMAL:
                 play();
